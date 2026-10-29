@@ -1,159 +1,47 @@
-* {
-  box-sizing: border-box;
-}
+function showError(year) {
+  document.getElementById("portal").hidden = true;
+  document.getElementById("error-page").hidden = true;
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f5f8;
-  color: #252b36;
-}
+  // Show a temporary loading screen
+  let loading = document.getElementById("loading-page");
 
-.college-header {
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 25px 15px;
-  border-bottom: 4px solid #a90016;
-  text-align: center;
-}
-
-.logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-
-.college-header h1 {
-  color: #b00018;
-  font-size: 22px;
-  margin: 0 0 6px;
-}
-
-.college-header h2 {
-  font-size: 20px;
-  margin: 0 0 8px;
-}
-
-.college-header p {
-  color: #555;
-  margin: 0;
-  font-size: 14px;
-}
-
-#portal, #error-page {
-  max-width: 700px;
-  margin: 35px auto;
-  padding: 20px;
-}
-
-.welcome {
-  margin-bottom: 25px;
-}
-
-.welcome h2 {
-  color: #9d0015;
-}
-
-.year-card {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 22px;
-  margin: 12px 0;
-  background: white;
-  border: 1px solid #d8dce3;
-  border-left: 5px solid #a90016;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 15px;
-}
-
-.year-card:hover {
-  background: #fff4f5;
-}
-
-.year-card span:last-child {
-  color: #a90016;
-  font-weight: bold;
-}
-
-.notice {
-  color: #777;
-  font-size: 12px;
-  margin-top: 25px;
-}
-
-.error-box {
-  background: white;
-  padding: 30px 22px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 12px #00000012;
-}
-
-.error-icon {
-  margin: auto;
-  width: 48px;
-  height: 48px;
-  border: 3px solid #b00018;
-  border-radius: 50%;
-  color: #b00018;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.error-box h2 {
-  font-size: 21px;
-}
-
-.error-box button {
-  padding: 12px 18px;
-  background: #a90016;
-  color: white;
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.demo-label {
-  font-size: 10px;
-  color: #888;
-  margin-top: 25px;
-}
-
-footer {
-  text-align: center;
-  padding: 22px 10px;
-  color: #777;
-  font-size: 12px;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-@media (max-width: 550px) {
-  .college-header {
-    flex-direction: column;
-    gap: 10px;
+  if (!loading) {
+    loading = document.createElement("main");
+    loading.id = "loading-page";
+    loading.style.cssText =
+      "max-width:700px;margin:60px auto;padding:24px;text-align:center;font-family:Arial,sans-serif;";
+    document.body.insertBefore(
+      loading,
+      document.querySelector("footer")
+    );
   }
 
-  .college-header h1 {
-    font-size: 19px;
-  }
+  loading.innerHTML = `
+    <h2>Fetching Pharm.D ${year}${year === 1 ? "st" : "nd"} Year Results</h2>
+    <p>Please wait while we process your request...</p>
+    <p id="loading-message">Connecting to results server...</p>
+    <div style="height:8px;background:#ddd;border-radius:8px;overflow:hidden;margin:24px 0">
+      <div id="progress" style="height:100%;width:0%;background:#a90016;transition:width 4s linear"></div>
+    </div>
+  `;
 
-  .college-header h2 {
-    font-size: 17px;
-  }
+  setTimeout(() => {
+    const bar = document.getElementById("progress");
+    if (bar) bar.style.width = "100%";
+  }, 50);
 
-  .year-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  // After 5 seconds, show the simulated error
+  setTimeout(() => {
+    loading.remove();
+    document.getElementById("error-page").hidden = false;
+
+    document.getElementById("error-message").textContent =
+      `The Pharm.D ${year}${year === 1 ? "st" : "nd"} Year results service is temporarily unavailable.`;
+  }, 5000);
 }
+
+function goBack() {
+  document.getElementById("error-page").hidden = true;
+  document.getElementById("portal").hidden = false;
+}
+    
