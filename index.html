@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a40019">
+<title>Pharm.D Examination Results</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="college-header">
+<img src="./logo.jpg" alt="College logo" class="logo">
+<div class="college-heading">
+<p class="college-kicker">CHENUPATI</p>
+<h1>INDO-AMERICAN SCHOOL OF PHARMACY</h1>
+<p class="college-approval">Pharm.D Examination Results Portal</p>
+</div>
+</header>
+<main id="portal" class="container">
+<section class="welcome">
+<p class="eyebrow">STUDENT EXAMINATION PORTAL</p>
+<h2>Doctor of Pharmacy Results</h2>
+<p>Select your year to continue.</p>
+</section>
+<button class="year-card" onclick="showError(1)" type="button">
+<span class="year-icon">1</span><span class="year-copy"><strong>Doctor of Pharmacy — 1st Year</strong><small>View examination results</small></span><span class="card-arrow">›</span>
+</button>
+<button class="year-card" onclick="showError(2)" type="button">
+<span class="year-icon">2</span><span class="year-copy"><strong>Doctor of Pharmacy — 2nd Year</strong><small>View examination results</small></span><span class="card-arrow">›</span>
+</button>
+</main>
+<main id="loading-page" class="container" hidden aria-live="polite">
+<section class="status-card">
+<div class="spinner"></div><p class="eyebrow">EXAMINATION PORTAL</p>
+<h2>Fetching examination results</h2><p id="loading-message">Connecting to results server…</p>
+<div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+<p class="small-muted">Please wait. Do not refresh this page.</p>
+</section>
+</main>
+<main id="error-page" class="container" hidden aria-live="polite">
+<section class="status-card">
+<div class="error-symbol">!</div><p class="eyebrow">RESULTS SERVICE</p>
+<h2>503 — Service Temporarily Unavailable</h2>
+<p id="error-message">The results service is temporarily unavailable.</p>
+<p>Please try again later.</p>
+<button class="back-button" onclick="goBack()" type="button">← Back to Results</button>
+</section>
+</main>
+<footer>Pharm.D Examination Results Portal</footer>
+<script src="./script.js"></script>
+</body>
+</html>
