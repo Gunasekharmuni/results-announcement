@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharm.D Results Portal — Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="college-header">
+    <img src="logo.jpg" alt="College logo" class="logo">
+    <div>
+      <h1>CHENUPATI INDO-AMERICAN</h1>
+      <h2>SCHOOL OF PHARMACY</h2>
+      <p>Pharm.D Examination Results Portal</p>
+    </div>
+  </header>
+
+  <main id="portal">
+    <section class="welcome">
+      <h2>Doctor of Pharmacy Results</h2>
+      <p>Select your year to continue.</p>
+    </section>
+
+    <button class="year-card" onclick="showError(1)">
+      <span>Doctor of Pharmacy — 1st Year</span>
+      <span>Check Results →</span>
+    </button>
+
+    <button class="year-card" onclick="showError(2)">
+      <span>Doctor of Pharmacy — 2nd Year</span>
+      <span>Check Results →</span>
+    </button>
+
+    <p class="notice">Demo website — results are not published here.</p>
+  </main>
+
+  <main id="error-page" hidden>
+    <div class="error-box">
+      <div class="error-icon">!</div>
+      <h2>503 — Service Temporarily Unavailable</h2>
+      <p id="error-message">The results service is temporarily unavailable.</p>
+      <p>Please try again later.</p>
+      <button onclick="goBack()">← Back to Results</button>
+      <p class="demo-label">SIMULATED ERROR FOR DEMONSTRATION</p>
+    </div>
+  </main>
+
+  <footer>Pharm.D Results Portal · Demonstration website</footer>
+  <script src="script.js"></script>
+</body>
+</html>
